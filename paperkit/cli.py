@@ -14,7 +14,7 @@ from .templates import print_templates
 def print_help():
     """Print help message."""
     print("""
-PyPaper - Academic manuscript toolkit
+DocTool - Academic manuscript toolkit
 ====================================================================
 
 Commands:
@@ -25,28 +25,28 @@ Commands:
     help       Show this help message
 
 Usage:
-    python -m pypaper init "Paper Title" [output.docx] [--template JOURNAL]
-    python -m pypaper convert input.tex [output.docx]
-    python -m pypaper format input.docx [output.docx]
-    python -m pypaper templates
+    python -m doctool init "Paper Title" [output.docx] [--template JOURNAL]
+    python -m doctool convert input.tex [output.docx]
+    python -m doctool format input.docx [output.docx]
+    python -m doctool templates
 
 Examples:
     # Create new paper with default template
-    python -m pypaper init "Climate Change Impacts" paper.docx
+    python -m doctool init "Climate Change Impacts" paper.docx
 
     # Create new paper for specific journal
-    python -m pypaper init "My Research" paper.docx --template agu
-    python -m pypaper init "My Research" paper.docx --template nature
-    python -m pypaper init "My Research" paper.docx --template science
+    python -m doctool init "My Research" paper.docx --template agu
+    python -m doctool init "My Research" paper.docx --template nature
+    python -m doctool init "My Research" paper.docx --template science
 
     # Convert LaTeX to Word
-    python -m pypaper convert manuscript.tex manuscript.docx
+    python -m doctool convert manuscript.tex manuscript.docx
 
     # Format existing Word document
-    python -m pypaper format draft.docx formatted.docx
+    python -m doctool format draft.docx formatted.docx
 
     # List available templates
-    python -m pypaper templates
+    python -m doctool templates
 
 Configuration:
     - Font: Arial, 12pt
@@ -79,7 +79,7 @@ def main():
         elif command == 'init':
             if len(sys.argv) < 3:
                 print("✗ Error: Title required")
-                print('Usage: python -m pypaper init "Paper Title" [output.docx] [--template JOURNAL]')
+                print('Usage: python -m doctool init "Paper Title" [output.docx] [--template JOURNAL]')
                 sys.exit(1)
 
             title = sys.argv[2]
@@ -107,7 +107,7 @@ def main():
         elif command == 'convert':
             if len(sys.argv) < 3:
                 print("✗ Error: Input file required")
-                print("Usage: python -m pypaper convert input.tex [output.docx]")
+                print("Usage: python -m doctool convert input.tex [output.docx]")
                 sys.exit(1)
 
             input_file = sys.argv[2]
@@ -125,7 +125,7 @@ def main():
         elif command == 'format':
             if len(sys.argv) < 3:
                 print("✗ Error: Input file required")
-                print("Usage: python -m pypaper format input.docx [output.docx]")
+                print("Usage: python -m doctool format input.docx [output.docx]")
                 sys.exit(1)
 
             input_file = sys.argv[2]
@@ -136,7 +136,7 @@ def main():
 
         else:
             print(f"✗ Error: Unknown command: {command}")
-            print("Run 'python -m pypaper help' for usage")
+            print("Run 'python -m doctool help' for usage")
             sys.exit(1)
 
     except KeyboardInterrupt:

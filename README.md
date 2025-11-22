@@ -1,4 +1,4 @@
-# PyPaper
+# PaperKit
 
 A complete Python package for creating, converting, and formatting academic manuscripts in Word format.
 
@@ -18,14 +18,14 @@ A complete Python package for creating, converting, and formatting academic manu
 ### From source (using uv)
 
 ```bash
-cd ~/pypaper
+cd ~/paperkit
 uv pip install -e .
 ```
 
 ### From source (using pip)
 
 ```bash
-cd ~/pypaper
+cd ~/paperkit
 pip install -e .
 ```
 
@@ -49,26 +49,26 @@ brew install pandoc  # macOS
 
 ```bash
 # List available journal templates
-python -m pypaper templates
+python -m paperkit templates
 
 # Create new paper with default template
-python -m pypaper init "Your Paper Title" paper.docx
+python -m paperkit init "Your Paper Title" paper.docx
 
 # Create paper for specific journal
-python -m pypaper init "Research Title" paper.docx --template agu
-python -m pypaper init "Research Title" paper.docx --template nature
+python -m paperkit init "Research Title" paper.docx --template agu
+python -m paperkit init "Research Title" paper.docx --template nature
 
 # Convert LaTeX to Word
-python -m pypaper convert manuscript.tex output.docx
+python -m paperkit convert manuscript.tex output.docx
 
 # Format existing Word document
-python -m pypaper format draft.docx formatted.docx
+python -m paperkit format draft.docx formatted.docx
 ```
 
 ### As Python Module
 
 ```python
-from pypaper import init_paper, convert_to_docx, apply_formatting
+from paperkit import init_paper, convert_to_docx, apply_formatting
 
 # Create new paper
 init_paper("Research Title", "paper.docx", template='nature')
@@ -124,7 +124,7 @@ Supported paper sizes:
 ## Package Structure
 
 ```
-pypaper/
+paperkit/
 ├── __init__.py       # Package exports
 ├── __main__.py       # Module entry point
 ├── cli.py            # Command-line interface
@@ -142,11 +142,11 @@ pypaper/
 
 ```bash
 # Test package installation
-python -m pypaper help
+python -m paperkit help
 
 # Create test documents
-python -m pypaper init "Test Paper" test.docx
-python -m pypaper templates
+python -m paperkit init "Test Paper" test.docx
+python -m paperkit templates
 ```
 
 ### Contributing
@@ -168,7 +168,7 @@ Free to use and modify.
 
 ## Author
 
-PyPaper Contributors
+PaperKit Contributors
 
 ## Version
 

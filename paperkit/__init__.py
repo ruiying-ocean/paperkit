@@ -1,11 +1,11 @@
 """
-PyPaper - Academic manuscript toolkit
+PaperKit - Academic manuscript toolkit
 
 A complete solution for creating, converting, and formatting academic manuscripts.
 """
 
 __version__ = "1.0.0"
-__author__ = "PyPaper Contributors"
+__author__ = "PaperKit Contributors"
 
 from .formatter import apply_formatting
 from .converter import convert_to_docx

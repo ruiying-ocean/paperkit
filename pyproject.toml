@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pypaper"
+name = "paperkit"
 version = "1.0.0"
 description = "Academic manuscript toolkit for creating, converting, and formatting papers"
 readme = "README.md"
@@ -25,10 +25,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ruiying-ocean/pypaper"
-Documentation = "https://github.com/ruiying-ocean/pypaper/blob/main/README.md"
-Repository = "https://github.com/yourusername/pypaper"
-"Bug Tracker" = "https://github.com/yourusername/pypaper/issues"
+Homepage = "https://github.com/ruiying-ocean/paperkit"
+Documentation = "https://github.com/ruiying-ocean/paperkit/blob/main/README.md"
+Repository = "https://github.com/ruiying-ocean/paperkit"
+"Bug Tracker" = "https://github.com/ruiying-ocean/paperkit/issues"
 
 [project.scripts]
-pypaper = "pypaper.cli:main"
+paperkit = "paperkit.cli:main"
