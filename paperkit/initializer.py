@@ -6,6 +6,7 @@ from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from .config import DEFAULT_CONFIG, PAPER_SIZES
 from .templates import get_template
+from .formatter import apply_apa_table_style
 
 
 def init_paper(title, output_file="paper.docx", config=None, template=None):
@@ -148,6 +149,60 @@ def init_paper(title, output_file="paper.docx", config=None, template=None):
             run.font.size = Pt(cfg['font_size'])
             run.font.color.rgb = RGBColor(0, 0, 0)  # Black
 
+        # Add sample table in Results section
+        if 'result' in section_title.lower():
+            doc.add_paragraph()
+
+            # Add table caption
+            caption = doc.add_paragraph('Sample Descriptive Statistics')
+            caption_run = caption.runs[0]
+            caption_run.font.name = cfg['font']
+            caption_run.font.size = Pt(cfg['font_size'])
+            caption_run.font.bold = True
+            caption_run.font.italic = True
+            caption_run.font.color.rgb = RGBColor(0, 0, 0)
+            caption_run.text = 'Table 1\nSample Descriptive Statistics'
+            caption.paragraph_format.space_before = Pt(12)
+            caption.paragraph_format.space_after = Pt(0)
+
+            # Create sample table
+            table = doc.add_table(rows=4, cols=4)
+
+            # Header row
+            header_cells = table.rows[0].cells
+            header_cells[0].text = 'Variable'
+            header_cells[1].text = 'M'
+            header_cells[2].text = 'SD'
+            header_cells[3].text = 'N'
+
+            # Data rows
+            data_rows = [
+                ('Age', '35.2', '8.4', '120'),
+                ('Experience (years)', '10.5', '4.2', '120'),
+                ('Performance Score', '78.3', '12.1', '120')
+            ]
+
+            for i, (var, mean, sd, n) in enumerate(data_rows, 1):
+                row = table.rows[i]
+                row.cells[0].text = var
+                row.cells[1].text = mean
+                row.cells[2].text = sd
+                row.cells[3].text = n
+
+            # Apply APA table formatting
+            apply_apa_table_style(table, cfg)
+
+            # Add note below table
+            doc.add_paragraph()
+            note = doc.add_paragraph('Note. M = Mean; SD = Standard Deviation; N = Sample size.')
+            note_run = note.runs[0]
+            note_run.font.name = cfg['font']
+            note_run.font.size = Pt(cfg['font_size'])
+            note_run.font.italic = True
+            note_run.font.color.rgb = RGBColor(0, 0, 0)
+            note.paragraph_format.space_before = Pt(0)
+            note.paragraph_format.space_after = Pt(6)
+
     # Save
     doc.save(output_file)
 
@@ -160,6 +215,7 @@ def init_paper(title, output_file="paper.docx", config=None, template=None):
     print(f"Font:     {cfg['font']}, {cfg['font_size']}pt")
     print(f"Spacing:  {cfg['line_spacing']}")
     print(f"Margins:  {cfg['margins']} inch")
+    print(f"Includes: Sample APA-formatted table in Results section")
     print()
 
     return True
