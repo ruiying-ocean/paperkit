@@ -14,7 +14,7 @@ from .templates import print_templates
 def print_help():
     """Print help message."""
     print("""
-DocTool - Academic manuscript toolkit
+PaperKit - Academic manuscript toolkit
 ====================================================================
 
 Commands:
@@ -25,28 +25,28 @@ Commands:
     help       Show this help message
 
 Usage:
-    python -m doctool init "Paper Title" [output.docx] [--template JOURNAL]
-    python -m doctool convert input.tex [output.docx]
-    python -m doctool format input.docx [output.docx]
-    python -m doctool templates
+    python -m paperkit init "Paper Title" [output.docx] [--template JOURNAL]
+    python -m paperkit convert input.tex [output.docx]
+    python -m paperkit format input.docx [output.docx]
+    python -m paperkit templates
 
 Examples:
     # Create new paper with default template
-    python -m doctool init "Climate Change Impacts" paper.docx
+    python -m paperkit init "Climate Change Impacts" paper.docx
 
     # Create new paper for specific journal
-    python -m doctool init "My Research" paper.docx --template agu
-    python -m doctool init "My Research" paper.docx --template nature
-    python -m doctool init "My Research" paper.docx --template science
+    python -m paperkit init "My Research" paper.docx --template agu
+    python -m paperkit init "My Research" paper.docx --template nature
+    python -m paperkit init "My Research" paper.docx --template science
 
     # Convert LaTeX to Word
-    python -m doctool convert manuscript.tex manuscript.docx
+    python -m paperkit convert manuscript.tex manuscript.docx
 
     # Format existing Word document
-    python -m doctool format draft.docx formatted.docx
+    python -m paperkit format draft.docx formatted.docx
 
     # List available templates
-    python -m doctool templates
+    python -m paperkit templates
 
 Configuration:
     - Font: Arial, 12pt
@@ -79,7 +79,7 @@ def main():
         elif command == 'init':
             if len(sys.argv) < 3:
                 print("✗ Error: Title required")
-                print('Usage: python -m doctool init "Paper Title" [output.docx] [--template JOURNAL]')
+                print('Usage: python -m paperkit init "Paper Title" [output.docx] [--template JOURNAL]')
                 sys.exit(1)
 
             title = sys.argv[2]
@@ -107,7 +107,7 @@ def main():
         elif command == 'convert':
             if len(sys.argv) < 3:
                 print("✗ Error: Input file required")
-                print("Usage: python -m doctool convert input.tex [output.docx]")
+                print("Usage: python -m paperkit convert input.tex [output.docx]")
                 sys.exit(1)
 
             input_file = sys.argv[2]
@@ -125,7 +125,7 @@ def main():
         elif command == 'format':
             if len(sys.argv) < 3:
                 print("✗ Error: Input file required")
-                print("Usage: python -m doctool format input.docx [output.docx]")
+                print("Usage: python -m paperkit format input.docx [output.docx]")
                 sys.exit(1)
 
             input_file = sys.argv[2]
@@ -136,7 +136,7 @@ def main():
 
         else:
             print(f"✗ Error: Unknown command: {command}")
-            print("Run 'python -m doctool help' for usage")
+            print("Run 'python -m paperkit help' for usage")
             sys.exit(1)
 
     except KeyboardInterrupt:

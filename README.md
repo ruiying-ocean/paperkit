@@ -4,14 +4,14 @@ A complete Python package for creating, converting, and formatting academic manu
 
 ## Features
 
-- ✅ Initialize new papers with proper structure and formatting
-- ✅ Convert LaTeX to Word with automatic formatting
-- ✅ Apply professional formatting to existing Word documents
-- ✅ Journal-specific templates (AGU, Nature, Science, PNAS)
-- ✅ Support for both .tex and .docx inputs
-- ✅ Automatic citation handling (APA style)
-- ✅ Flexible paper sizes (A4, Letter, Legal, etc.)
-- ✅ UK/US English language settings
+- Initialize new papers with proper structure and formatting
+- Convert LaTeX to Word with automatic formatting
+- Apply professional formatting to existing Word documents
+- Journal-specific templates (AGU, Nature, Science, PNAS)
+- Support for both .tex and .docx inputs
+- Automatic citation handling (APA style)
+- Flexible paper sizes (A4, Letter, Legal, etc.)
+- UK/US English language settings
 
 ## Installation
 
@@ -149,27 +149,8 @@ python -m paperkit init "Test Paper" test.docx
 python -m paperkit templates
 ```
 
-### Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
 ## Requirements
 
-- Python 3.6+
+- Python 3.9+
 - python-docx >= 0.8.0
 - pandoc (for LaTeX conversion)
-
-## License
-
-Free to use and modify.
-
-## Author
-
-PaperKit Contributors
-
-## Version
-
-1.0.0
