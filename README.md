@@ -1,0 +1,175 @@
+# PyPaper
+
+A complete Python package for creating, converting, and formatting academic manuscripts in Word format.
+
+## Features
+
+- ✅ Initialize new papers with proper structure and formatting
+- ✅ Convert LaTeX to Word with automatic formatting
+- ✅ Apply professional formatting to existing Word documents
+- ✅ Journal-specific templates (AGU, Nature, Science, PNAS)
+- ✅ Support for both .tex and .docx inputs
+- ✅ Automatic citation handling (APA style)
+- ✅ Flexible paper sizes (A4, Letter, Legal, etc.)
+- ✅ UK/US English language settings
+
+## Installation
+
+### From source (using uv)
+
+```bash
+cd ~/pypaper
+uv pip install -e .
+```
+
+### From source (using pip)
+
+```bash
+cd ~/pypaper
+pip install -e .
+```
+
+### Dependencies
+
+```bash
+# Install Python dependencies (uv)
+uv pip install python-docx
+
+# Or using pip
+pip install python-docx
+
+# Install pandoc (required for LaTeX conversion)
+brew install pandoc  # macOS
+# sudo apt install pandoc  # Linux
+```
+
+## Quick Start
+
+### Command Line
+
+```bash
+# List available journal templates
+python -m pypaper templates
+
+# Create new paper with default template
+python -m pypaper init "Your Paper Title" paper.docx
+
+# Create paper for specific journal
+python -m pypaper init "Research Title" paper.docx --template agu
+python -m pypaper init "Research Title" paper.docx --template nature
+
+# Convert LaTeX to Word
+python -m pypaper convert manuscript.tex output.docx
+
+# Format existing Word document
+python -m pypaper format draft.docx formatted.docx
+```
+
+### As Python Module
+
+```python
+from pypaper import init_paper, convert_to_docx, apply_formatting
+
+# Create new paper
+init_paper("Research Title", "paper.docx", template='nature')
+
+# Convert LaTeX
+convert_to_docx("manuscript.tex", "output.docx")
+
+# Format existing document
+apply_formatting("draft.docx", "formatted.docx")
+```
+
+## Journal Templates
+
+### Available Templates
+
+- **AGU** - American Geophysical Union (Times New Roman, Letter, author-year)
+- **Nature** - Nature journal (Arial, A4, numbered citations)
+- **Science** - Science journal (Times New Roman, Letter, numbered)
+- **PNAS** - PNAS journal (Times New Roman, Letter, numbered)
+- **Default** - General academic (Arial, A4, author-year)
+
+### Template Features
+
+Each template includes:
+- Journal-specific fonts and sizes
+- Correct line spacing
+- Proper section structure
+- Citation style (author-year vs numbered)
+- Paper size (A4 vs Letter)
+- Language settings (US/UK English)
+
+## Paper Sizes
+
+Supported paper sizes:
+- `a4` - 210mm × 297mm (default)
+- `letter` - US Letter (8.5" × 11")
+- `legal` - US Legal (8.5" × 14")
+- `a5` - 148mm × 210mm
+- `b5` - 176mm × 250mm
+
+## Default Formatting
+
+- **Font**: Arial, 12pt
+- **Line spacing**: 1.5 (varies by template)
+- **Margins**: 1 inch (all sides)
+- **Title**: 16pt, Bold, Black
+- **Heading 1**: 14pt, Bold, Black
+- **Heading 2**: 12pt, Bold, Black
+- **Language**: UK English (en-GB)
+- **Citations**: APA style (author-year)
+- **Paper size**: A4
+
+## Package Structure
+
+```
+pypaper/
+├── __init__.py       # Package exports
+├── __main__.py       # Module entry point
+├── cli.py            # Command-line interface
+├── config.py         # Configuration settings
+├── formatter.py      # Document formatting
+├── converter.py      # LaTeX/Word conversion
+├── initializer.py    # New paper creation
+├── templates.py      # Journal templates
+└── README.md         # Package documentation
+```
+
+## Development
+
+### Testing
+
+```bash
+# Test package installation
+python -m pypaper help
+
+# Create test documents
+python -m pypaper init "Test Paper" test.docx
+python -m pypaper templates
+```
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## Requirements
+
+- Python 3.6+
+- python-docx >= 0.8.0
+- pandoc (for LaTeX conversion)
+
+## License
+
+Free to use and modify.
+
+## Author
+
+PyPaper Contributors
+
+## Version
+
+1.0.0
