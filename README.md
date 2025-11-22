@@ -47,6 +47,28 @@ brew install pandoc  # macOS
 
 ### Command Line
 
+Using `uv run` (recommended):
+
+```bash
+# List available journal templates
+uv run paperkit templates
+
+# Create new paper with default template
+uv run paperkit init "Your Paper Title" paper.docx
+
+# Create paper for specific journal
+uv run paperkit init "Research Title" paper.docx --template agu
+uv run paperkit init "Research Title" paper.docx --template nature
+
+# Convert LaTeX to Word
+uv run paperkit convert manuscript.tex output.docx
+
+# Format existing Word document
+uv run paperkit format draft.docx formatted.docx
+```
+
+Using `python -m` (alternative):
+
 ```bash
 # List available journal templates
 python -m paperkit templates
